@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Matt Hackmann. All rights reserved.
 //
 
-#import "DXMPSecondViewController.h"
+#import "NowPlayingViewController.h"
 
-@interface DXMPSecondViewController ()
+@interface NowPlayingViewController ()
 
 @end
 
-@implementation DXMPSecondViewController
+@implementation NowPlayingViewController
 
 - (void)viewDidLoad
 {
