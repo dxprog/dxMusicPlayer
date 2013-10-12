@@ -6,15 +6,16 @@
 //  Copyright (c) 2013 Matt Hackmann. All rights reserved.
 //
 
-#import "Content.h"
+#import "DXContent.h"
 
-@interface Album : Content
+@interface DXAlbum : DXContent
 
 @property (strong, nonatomic) NSString *artwork;
 @property (strong, nonatomic) NSString *wallpaper;
 
 + (NSArray *)initFromArray:(NSArray *)content;
-+ (UIImage *)loadAlbumArtThumbnail:(NSString *)fileName;
+- (UIImage *)loadAlbumArtThumbnail;
+- (UIImage *)loadAlbumArtThumbnail:(NSInteger)width by:(NSInteger)height;
 - (instancetype) initFromDictionary:(NSDictionary *)dictionary;
 
 @end

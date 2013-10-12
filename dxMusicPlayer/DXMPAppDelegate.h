@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "lib/DXDataManager.h"
 
 @interface DXMPAppDelegate : UIResponder <UIApplicationDelegate>
 

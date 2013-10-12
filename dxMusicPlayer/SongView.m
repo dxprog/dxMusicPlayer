@@ -7,15 +7,15 @@
 //
 
 #import "SongView.h"
-#import "model/Album.h"
-#import "lib/DataManager.h"
+#import "model/DXAlbum.h"
+#import "lib/DXDataManager.h"
 
 const NSString *TABLECELLIDENT_SONG = @"songCell";
 
 @interface SongView ()
 
 @property (nonatomic, strong) NSArray *content;
-@property (nonatomic, weak) DataManager *dataManager;
+@property (nonatomic, weak) DXDataManager *dataManager;
 
 @end
 
@@ -30,9 +30,9 @@ const NSString *TABLECELLIDENT_SONG = @"songCell";
     return self;
 }
 
-- (id)initFromAlbum:(Content *)album {
+- (id)initFromAlbum:(DXContent *)album {
     self = [super initWithStyle:UITableViewCellStyleDefault];
-    self.dataManager = [DataManager getDataManager];
+    self.dataManager = [DXDataManager getDataManager];
     if (nil != album) {
         self.content = [self.dataManager getSongsByAlbumId:[album id]];
     }
@@ -64,12 +64,19 @@ const NSString *TABLECELLIDENT_SONG = @"songCell";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:(NSString *)TABLECELLIDENT_SONG];
     }
     
-    Content *item = (Content *)[self.content objectAtIndex:indexPath.row];
+    DXContent *item = (DXContent *)[self.content objectAtIndex:indexPath.row];
     cell.textLabel.text = item.title;
     
     // Configure the cell...
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DXSong *song = [self.content objectAtIndex:indexPath.row];
+    if (nil != song) {
+        [DXPlaylistController queueSong:song];
+    }
 }
 
 /*

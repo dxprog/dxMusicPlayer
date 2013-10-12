@@ -7,16 +7,12 @@
 //
 
 #import "AlbumViewController.h"
-#import "SongView.h"
-#import "model/Content.h"
-#import "model/Album.h"
-#import "lib/DataManager.h"
 
 const NSString *TABLECELLIDENT_ALBUM = @"cellAlbum";
 
 @interface AlbumViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *lstItems;
-@property (strong, nonatomic) DataManager *dataManager;
+@property (weak, nonatomic) DXDataManager *dataManager;
 @end
 
 @implementation AlbumViewController
@@ -26,8 +22,8 @@ const NSString *TABLECELLIDENT_ALBUM = @"cellAlbum";
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:(NSString *)TABLECELLIDENT_ALBUM];
-    _lstItems.delegate = self;
-    self.dataManager = [DataManager getDataManager];
+    self.lstItems.delegate = self;
+    self.dataManager = [DXDataManager getDataManager];
     [self.lstItems reloadData];
     
 }
@@ -43,13 +39,9 @@ const NSString *TABLECELLIDENT_ALBUM = @"cellAlbum";
     }
     
     
-    Content *item = (Content *)[[self.dataManager albums] objectAtIndex:indexPath.row];
+    DXAlbum *item = (DXAlbum *)[[self.dataManager albums] objectAtIndex:indexPath.row];
     cell.textLabel.text = [item title];
-    
-    NSString *art = [[item meta] valueForKey:@"art"];
-    if (nil != art) {
-        cell.imageView.image = [Album loadAlbumArtThumbnail:art];
-    }
+    cell.imageView.image = [item loadAlbumArtThumbnail];
     
     cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     
@@ -57,10 +49,9 @@ const NSString *TABLECELLIDENT_ALBUM = @"cellAlbum";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Album *item = (Album *)[[self.dataManager albums] objectAtIndex:indexPath.row];
+    DXAlbum *item = (DXAlbum *)[[self.dataManager albums] objectAtIndex:indexPath.row];
     SongView *newView = [[SongView alloc] initFromAlbum:item];
     [[self navigationController] pushViewController:newView animated:YES];
-    [[self navigationController] setTitle:[item title]];
 }
 
 - (void)didReceiveMemoryWarning

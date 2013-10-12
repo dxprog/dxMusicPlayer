@@ -1,17 +1,16 @@
 //
-//  Playlist.h
+//  MediaPlayerDelegate.h
 //  dxMusicPlayer
 //
-//  Created by Matt Hackmann on 10/4/13.
+//  Created by Matt Hackmann on 10/12/13.
 //  Copyright (c) 2013 Matt Hackmann. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "../model/Song.h"
 
-@interface Playlist : NSObject
+@protocol DXMediaPlayerDelegate <NSObject>
 
-+ (void) queueSong:(Song *)song;
-+ (Song *) nextSong;
+- (void) songDidFinishPlaying;
 
 @end

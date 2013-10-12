@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Content : NSObject
+@interface DXContent : NSObject
 
 @property (nonatomic) NSInteger id;
 @property (strong, nonatomic) NSString *title;
@@ -21,6 +21,6 @@
 + (NSMutableArray *) initFromArray:(NSArray *)array;
 + (NSMutableArray *) initFromArray:(NSArray *)array ByContentType:(NSString *)type;
 - (instancetype) initFromDictionary:(NSDictionary *)dictionary;
-- (int)numberFromString:(NSString *)string;
+- (NSInteger)numberFromString:(NSString *)string;
 
 @end

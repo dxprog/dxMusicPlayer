@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "model/Album.h"
+#import "model/DXAlbum.h"
+#import "lib/DXPlaylistController.h"
 
 @interface SongView : UITableViewController
 
-- (id)initFromAlbum:(Album *)album;
+- (id)initFromAlbum:(DXAlbum *)album;
 
 @end

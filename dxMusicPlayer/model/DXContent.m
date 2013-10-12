@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Matt Hackmann. All rights reserved.
 //
 
-#import "Content.h"
+#import "DXContent.h"
 
-@implementation Content
+@implementation DXContent
 
 
 
@@ -16,7 +16,7 @@
 
     NSMutableArray *retVal = [[NSMutableArray alloc] init];
     for (int i = 0, count = [array count]; i < count; i++) {
-        Content *content = [[Content alloc] initFromDictionary:array[i]];
+        DXContent *content = [[DXContent alloc] initFromDictionary:array[i]];
         if (content.title != nil) {
             [retVal addObject:content];
         }
@@ -52,8 +52,12 @@
     return self;
 }
 
-- (int)numberFromString:(NSString *)string {
-    return [string intValue];
+- (NSInteger)numberFromString:(NSString *)string {
+    NSInteger retVal = nil;
+    if (![string isEqual:[NSNull null]]) {
+        retVal = [string intValue];
+    }
+    return retVal;
 }
 
 @end

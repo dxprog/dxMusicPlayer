@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "../model/Content.h"
-#import "../model/Album.h"
-#import "../model/Song.h"
+#import "../model/DXContent.h"
+#import "../model/DXAlbum.h"
+#import "../model/DXSong.h"
 
-@interface DataManager : NSObject
+@interface DXDataManager : NSObject
 
 @property (nonatomic, strong) NSArray *albums;
 @property (nonatomic, strong) NSArray *songs;
@@ -19,5 +19,6 @@
 - (id)init;
 + (instancetype)getDataManager;
 - (NSArray *)getSongsByAlbumId:(NSInteger)albumId;
+- (DXAlbum *)getAlbumById:(NSInteger)albumId;
 
 @end

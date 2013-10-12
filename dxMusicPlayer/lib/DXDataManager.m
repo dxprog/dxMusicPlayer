@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Matt Hackmann. All rights reserved.
 //
 
-#import "DataManager.h"
+#import "DXDataManager.h"
 
-@implementation DataManager
+@implementation DXDataManager
 
 - init {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -25,14 +25,14 @@
         id objData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         if ([objData isKindOfClass:[NSDictionary class]] && [objData[@"body"] isKindOfClass:[NSArray class]]) {
             NSArray *content = [objData valueForKey:@"body"];
-            NSArray *albums = [Album initFromArray:content];
+            NSArray *albums = [DXAlbum initFromArray:content];
             self.albums = [albums sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
-                Content *contentA = (Content *)obj1;
-                Content *contentB = (Content *)obj2;
+                DXContent *contentA = (DXContent *)obj1;
+                DXContent *contentB = (DXContent *)obj2;
                 return [contentA.title compare:contentB.title];
             }];
             
-            self.songs = [Song initFromArray:content];
+            self.songs = [DXSong initFromArray:content];
             
         }
     }
@@ -45,10 +45,10 @@
  * Singleton for internal data structure
  */
 + (instancetype)getDataManager {
-    static DataManager* internalDataManager = nil;
+    static DXDataManager* internalDataManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        internalDataManager = [[DataManager alloc] init];
+        internalDataManager = [[DXDataManager alloc] init];
     });
     return internalDataManager;
 }
@@ -56,9 +56,19 @@
 - (NSArray *)getSongsByAlbumId:(NSInteger)albumId {
     NSMutableArray *retVal = [[NSMutableArray alloc] init];
     for (int i = 0, count = [self.songs count]; i < count; i++) {
-        Song *song = (Song *)[self.songs objectAtIndex:i];
+        DXSong *song = (DXSong *)[self.songs objectAtIndex:i];
         if ([song parent] == albumId) {
             [retVal addObject:song];
+        }
+    }
+    return retVal;
+}
+
+- (DXAlbum *)getAlbumById:(NSInteger)albumId {
+    DXAlbum *retVal = nil;
+    for (int i = 0, count = [self.albums count]; i < count; i++) {
+        if ([(DXContent *)[self.albums objectAtIndex:i] id] == albumId) {
+            retVal = (DXAlbum *)[self.albums objectAtIndex:i];
         }
     }
     return retVal;

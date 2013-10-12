@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SongView.h"
+#import "model/DXContent.h"
+#import "model/DXAlbum.h"
+#import "lib/DXDataManager.h"
 
 @interface AlbumViewController : UITableViewController
 
