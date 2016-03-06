@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "../model/Song.h"
+#import "../model/DXSong.h"
 
 @protocol DXPlaylistDelegate <NSObject>
 
-- (void)itemQueued:(Song *)song;
-- (void)itemPlaying:(Song *)song;
+- (void)itemQueued:(DXSong *)song;
+- (void)itemPlaying:(DXSong *)song;
 
 @end

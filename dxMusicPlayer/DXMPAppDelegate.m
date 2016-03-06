@@ -49,4 +49,30 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+/**
+ * This view will be our entry point for remote events
+ */
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlPlay:
+            case UIEventSubtypeRemoteControlPause:
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                [DXMediaPlayer togglePause];
+                break;
+            case UIEventSubtypeRemoteControlNextTrack:
+                [DXPlaylistController nextSong];
+                break;
+            default:
+                break;
+        }
+    } else {
+        [super remoteControlReceivedWithEvent:event];
+    }
+}
+
 @end

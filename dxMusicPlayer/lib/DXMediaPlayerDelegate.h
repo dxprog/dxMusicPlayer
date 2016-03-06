@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "../model/Song.h"
+#import "../model/DXSong.h"
 
 @protocol DXMediaPlayerDelegate <NSObject>
 

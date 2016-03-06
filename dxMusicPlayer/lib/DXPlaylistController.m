@@ -25,25 +25,49 @@
     return self;
 }
 
-- (void) queueSong:(DXSong *)song {
+/**
+ Adds a song to the queue with the option of playing
+ @param song The song to add to the queue
+ @param play Play the song if nothing else is playing
+ */
+- (void)queueSong:(DXSong *)song withPlay:(BOOL)play {
     [self.queue addObject:song];
     [self.delegate itemQueued:song];
     
     // Not playing anything? Play something!
-    if (self.isPlaying == NO) {
+    if (self.isPlaying == NO && play) {
         [self nextSong];
     }
 }
 
+/**
+ Adds a song to the queue and plays if nothing is playing
+ @param song The song to add to the queue
+ */
+- (void) queueSong:(DXSong *)song {
+    [self queueSong:song withPlay:YES];
+}
+
+/**
+ Advances the playlist to the next song and plays it
+ @return The song that will be played
+ */
 - (DXSong *) nextSong {
     DXSong *retVal = nil;
+    
+    // play the next song in the playlist or pick a random song
     if ([self.queue count] >= self.currentSong + 1) {
         retVal = (DXSong *)[self.queue objectAtIndex:self.currentSong];
-        [DXMediaPlayer playSong:retVal];
-        self.isPlaying = YES;
-        self.currentSong++;
-        [self.delegate itemPlaying:retVal];
+    } else {
+        retVal = [DXDataManager selectRandomSong];
+        [self queueSong:retVal withPlay:NO];
     }
+    
+    [DXMediaPlayer playSong:retVal];
+    self.isPlaying = YES;
+    self.currentSong++;
+    [self.delegate itemPlaying:retVal];
+    
     return retVal;
 }
 
@@ -52,12 +76,26 @@
     [self.delegate itemPlaying:[self nextSong]];
 }
 
+/**
+ Returns the song currently playing
+ */
+- (DXSong *) getCurrentSong {
+    DXSong *retVal = nil;
+    long currentSong = (long) self.currentSong;
+    NSLog(@"%ld", currentSong);
+    if (self.isPlaying) {
+        retVal = self.queue[self.currentSong - 1];
+    }
+    
+    return retVal;
+}
+
 /******************************************************
- * STATIC METHODS                                     *
+ * STATIC ACCESSORS                                   *
  *****************************************************/
 
 /**
- * Singleton instance of playlist
+ Returns the single playlist manager instance
  */
 + (id) getPlaylistManager {
     static DXPlaylistController* internalPlaylist = nil;
@@ -69,18 +107,23 @@
 }
 
 /**
- * Adds a song to the queue
+ Adds a song to the queue and plays if nothing is playing
+ @param song The song to add to the queue
  */
 + (void) queueSong:(DXSong *)song {
     [[self getPlaylistManager] queueSong:song];
 }
 
+/**
+ Advances the playlist to the next song and plays it
+ @return The song that will be played
+ */
 + (DXSong *) nextSong {
     return [[self getPlaylistManager] nextSong];
 }
 
 /**
- * Returns a pointer to the internal song queue
+ Get the internal playlist queue
  */
 + (NSMutableArray *)getQueue {
     return [[self getPlaylistManager] queue];
@@ -93,8 +136,18 @@
     [[self getPlaylistManager] setDelegate:delegate];
 }
 
+/**
+ Returns the current playing status of the player
+ */
 + (BOOL)getIsPlaying {
     return [[self getPlaylistManager] isPlaying];
+}
+
+/**
+ Returns the song currently playing
+ */
++ (DXSong *) getCurrentSong {
+    return [[self getPlaylistManager] getCurrentSong];
 }
 
 @end

@@ -10,12 +10,14 @@
 
 @implementation DXContent
 
-
-
+/**
+ Takes an array of dictionary objects and returns an array of DXContent
+ @param array Array of objects to convert
+ */
 + (NSArray *)initFromArray:(NSArray *)array {
 
     NSMutableArray *retVal = [[NSMutableArray alloc] init];
-    for (int i = 0, count = [array count]; i < count; i++) {
+    for (long i = 0, count = [array count]; i < count; i++) {
         DXContent *content = [[DXContent alloc] initFromDictionary:array[i]];
         if (content.title != nil) {
             [retVal addObject:content];
@@ -25,10 +27,15 @@
     return retVal;
 }
 
+/**
+ Takes an array of content and builds an array of DXContent filtering by content type
+ @param array Array of objects to convert
+ @param type Content type to filter for
+ */
 + (NSArray *)initFromArray:(NSArray *)array
              ByContentType:(NSString *)type {
     NSMutableArray *retVal = [[NSMutableArray alloc] init];
-    for (int i = 0, count = [array count]; i < count; i++) {
+    for (long i = 0, count = [array count]; i < count; i++) {
         NSDictionary *item = (NSDictionary *)[array objectAtIndex:i];
         if ([(NSString *)[item valueForKey:@"type"] isEqualToString:type] && nil != [item valueForKey:@"title"]) {
             [retVal addObject:[[self alloc] initFromDictionary:item]];
@@ -38,6 +45,10 @@
     return retVal;
 }
 
+/**
+ Creates a DXContent object from  a dictionary
+ @param dictionary Dictionary to populate data from
+ */
 - (id)initFromDictionary:(NSDictionary *)dictionary {
     self = [super init];
     
@@ -52,6 +63,9 @@
     return self;
 }
 
+/**
+ @todo move to generic library
+ */
 - (NSInteger)numberFromString:(NSString *)string {
     NSInteger retVal = nil;
     if (![string isEqual:[NSNull null]]) {

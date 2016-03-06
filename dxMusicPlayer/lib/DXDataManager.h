@@ -10,6 +10,7 @@
 #import "../model/DXContent.h"
 #import "../model/DXAlbum.h"
 #import "../model/DXSong.h"
+#import "DXApiRequest.h"
 
 @interface DXDataManager : NSObject
 
@@ -18,7 +19,12 @@
 
 - (id)init;
 + (instancetype)getDataManager;
++ (DXSong *)selectRandomSong;
 - (NSArray *)getSongsByAlbumId:(NSInteger)albumId;
 - (DXAlbum *)getAlbumById:(NSInteger)albumId;
+- (DXSong *)getSongById:(NSInteger)songId;
+- (DXContent *)getContent:(NSArray *)source byId:(NSInteger)contentId;
+- (NSMutableArray *)loadSongsFromListURL:(NSString *)url;
+- (NSMutableArray *)searchSongs:(NSString *)terms;
 
 @end

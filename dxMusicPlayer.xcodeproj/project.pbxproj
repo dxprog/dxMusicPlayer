@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30B2D8E21855A51900FDE6D6 /* DXApiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D8E11855A51900FDE6D6 /* DXApiRequest.m */; };
+		30B2D8E51855A80100FDE6D6 /* DXFileIOHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D8E41855A80100FDE6D6 /* DXFileIOHelper.m */; };
+		30B2D8E81855AB3500FDE6D6 /* DXTrendingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D8E71855AB3500FDE6D6 /* DXTrendingListViewController.m */; };
+		30D09F9218A0A0F3006237C0 /* DXID3Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D09F9118A0A0F3006237C0 /* DXID3Parser.m */; };
+		30D09F9418A0A8E1006237C0 /* trending@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D09F9318A0A8E1006237C0 /* trending@2x.png */; };
+		30D09F9618A0C13C006237C0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D09F9518A0C13C006237C0 /* CoreMedia.framework */; };
 		30D371CD18051C2D0085D34C /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D371C918051C2D0085D34C /* music.png */; };
 		30D371CE18051C2D0085D34C /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D371CA18051C2D0085D34C /* music@2x.png */; };
 		30D371CF18051C2D0085D34C /* play-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D371CB18051C2D0085D34C /* play-alt.png */; };
@@ -16,6 +22,8 @@
 		30D371DF18092EC90085D34C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D371DD18092EC90085D34C /* Default.png */; };
 		30D371E218092FAC0085D34C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D371E118092FAC0085D34C /* Default@2x.png */; };
 		30D371E61809CB290085D34C /* DXMediaLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D371E51809CB290085D34C /* DXMediaLibrary.m */; };
+		30D371E81809CC430085D34C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D371E71809CC430085D34C /* MediaPlayer.framework */; };
+		30DDD6101827524A006E63D4 /* DXProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DDD60F1827524A006E63D4 /* DXProgressBar.m */; };
 		3D19F8C317F2324700996699 /* SongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8C217F2324700996699 /* SongView.m */; };
 		3D4404D717FF7B4F00C419EF /* DXMediaPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4404D617FF7B4F00C419EF /* DXMediaPlayer.m */; };
 		3D9E1E3F17ECBEA4000A372F /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9E1E3E17ECBEA4000A372F /* AlbumViewController.m */; };
@@ -37,6 +45,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30B2D8E01855A51900FDE6D6 /* DXApiRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DXApiRequest.h; path = lib/DXApiRequest.h; sourceTree = "<group>"; };
+		30B2D8E11855A51900FDE6D6 /* DXApiRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DXApiRequest.m; path = lib/DXApiRequest.m; sourceTree = "<group>"; };
+		30B2D8E31855A80100FDE6D6 /* DXFileIOHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DXFileIOHelper.h; path = lib/DXFileIOHelper.h; sourceTree = "<group>"; };
+		30B2D8E41855A80100FDE6D6 /* DXFileIOHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DXFileIOHelper.m; path = lib/DXFileIOHelper.m; sourceTree = "<group>"; };
+		30B2D8E61855AB3500FDE6D6 /* DXTrendingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXTrendingListViewController.h; sourceTree = "<group>"; };
+		30B2D8E71855AB3500FDE6D6 /* DXTrendingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXTrendingListViewController.m; sourceTree = "<group>"; };
+		30D09F9018A0A0F3006237C0 /* DXID3Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DXID3Parser.h; path = lib/DXID3Parser.h; sourceTree = "<group>"; };
+		30D09F9118A0A0F3006237C0 /* DXID3Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DXID3Parser.m; path = lib/DXID3Parser.m; sourceTree = "<group>"; };
+		30D09F9318A0A8E1006237C0 /* trending@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trending@2x.png"; path = "assets/trending@2x.png"; sourceTree = "<group>"; };
+		30D09F9518A0C13C006237C0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		30D371C918051C2D0085D34C /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = music.png; path = assets/music.png; sourceTree = "<group>"; };
 		30D371CA18051C2D0085D34C /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "music@2x.png"; path = "assets/music@2x.png"; sourceTree = "<group>"; };
 		30D371CB18051C2D0085D34C /* play-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play-alt.png"; path = "assets/play-alt.png"; sourceTree = "<group>"; };
@@ -50,6 +68,9 @@
 		30D371E31809B1340085D34C /* DXMediaPlayerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DXMediaPlayerDelegate.h; path = lib/DXMediaPlayerDelegate.h; sourceTree = "<group>"; };
 		30D371E41809CB290085D34C /* DXMediaLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DXMediaLibrary.h; path = lib/DXMediaLibrary.h; sourceTree = "<group>"; };
 		30D371E51809CB290085D34C /* DXMediaLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DXMediaLibrary.m; path = lib/DXMediaLibrary.m; sourceTree = "<group>"; };
+		30D371E71809CC430085D34C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		30DDD60E1827524A006E63D4 /* DXProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXProgressBar.h; sourceTree = "<group>"; };
+		30DDD60F1827524A006E63D4 /* DXProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXProgressBar.m; sourceTree = "<group>"; };
 		3D19F8C117F2324700996699 /* SongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongView.h; sourceTree = "<group>"; };
 		3D19F8C217F2324700996699 /* SongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongView.m; sourceTree = "<group>"; };
 		3D4404D517FF7B4F00C419EF /* DXMediaPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DXMediaPlayer.h; path = lib/DXMediaPlayer.h; sourceTree = "<group>"; };
@@ -87,6 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D09F9618A0C13C006237C0 /* CoreMedia.framework in Frameworks */,
+				30D371E81809CC430085D34C /* MediaPlayer.framework in Frameworks */,
 				30D371D6180633ED0085D34C /* AVFoundation.framework in Frameworks */,
 				3DAB205417CBFB2500754A56 /* UIKit.framework in Frameworks */,
 				3DAB205617CBFB2500754A56 /* Foundation.framework in Frameworks */,
@@ -100,6 +123,7 @@
 		30D371C818051C230085D34C /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				30D09F9318A0A8E1006237C0 /* trending@2x.png */,
 				30D371E118092FAC0085D34C /* Default@2x.png */,
 				30D371DD18092EC90085D34C /* Default.png */,
 				30D371C918051C2D0085D34C /* music.png */,
@@ -115,6 +139,8 @@
 			children = (
 				30D371D1180524420085D34C /* DXPlaylistController.h */,
 				30D371D2180524420085D34C /* DXPlaylistController.m */,
+				30B2D8E01855A51900FDE6D6 /* DXApiRequest.h */,
+				30B2D8E11855A51900FDE6D6 /* DXApiRequest.m */,
 				3D9E1E4017ECE73D000A372F /* DXDataManager.h */,
 				3D9E1E4117ECE73D000A372F /* DXDataManager.m */,
 				3D4404D517FF7B4F00C419EF /* DXMediaPlayer.h */,
@@ -123,6 +149,10 @@
 				30D371E31809B1340085D34C /* DXMediaPlayerDelegate.h */,
 				30D371E41809CB290085D34C /* DXMediaLibrary.h */,
 				30D371E51809CB290085D34C /* DXMediaLibrary.m */,
+				30B2D8E31855A80100FDE6D6 /* DXFileIOHelper.h */,
+				30B2D8E41855A80100FDE6D6 /* DXFileIOHelper.m */,
+				30D09F9018A0A0F3006237C0 /* DXID3Parser.h */,
+				30D09F9118A0A0F3006237C0 /* DXID3Parser.m */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -147,6 +177,8 @@
 		3DAB205217CBFB2500754A56 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30D09F9518A0C13C006237C0 /* CoreMedia.framework */,
+				30D371E71809CC430085D34C /* MediaPlayer.framework */,
 				30D371D5180633ED0085D34C /* AVFoundation.framework */,
 				3DAB205317CBFB2500754A56 /* UIKit.framework */,
 				3DAB205517CBFB2500754A56 /* Foundation.framework */,
@@ -171,6 +203,10 @@
 				3DAB205A17CBFB2500754A56 /* Supporting Files */,
 				3D19F8C117F2324700996699 /* SongView.h */,
 				3D19F8C217F2324700996699 /* SongView.m */,
+				30B2D8E61855AB3500FDE6D6 /* DXTrendingListViewController.h */,
+				30B2D8E71855AB3500FDE6D6 /* DXTrendingListViewController.m */,
+				30DDD60E1827524A006E63D4 /* DXProgressBar.h */,
+				30DDD60F1827524A006E63D4 /* DXProgressBar.m */,
 			);
 			path = dxMusicPlayer;
 			sourceTree = "<group>";
@@ -229,8 +265,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DXMP;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Matt Hackmann";
+				TargetAttributes = {
+					3DAB204E17CBFB2500754A56 = {
+						DevelopmentTeam = E23JZK9325;
+					};
+				};
 			};
 			buildConfigurationList = 3DAB204917CBFB2500754A56 /* Build configuration list for PBXProject "dxMusicPlayer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -257,6 +298,7 @@
 				3DAB205E17CBFB2500754A56 /* InfoPlist.strings in Resources */,
 				3DAB206617CBFB2500754A56 /* Default.png in Resources */,
 				3DAB206817CBFB2500754A56 /* Default@2x.png in Resources */,
+				30D09F9418A0A8E1006237C0 /* trending@2x.png in Resources */,
 				3DAB206A17CBFB2500754A56 /* Default-568h@2x.png in Resources */,
 				3DAB206D17CBFB2500754A56 /* MainStoryboard.storyboard in Resources */,
 				30D371E218092FAC0085D34C /* Default@2x.png in Resources */,
@@ -276,14 +318,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DAB206017CBFB2500754A56 /* main.m in Sources */,
+				30DDD6101827524A006E63D4 /* DXProgressBar.m in Sources */,
 				3D9E1E3F17ECBEA4000A372F /* AlbumViewController.m in Sources */,
 				3DAB206417CBFB2500754A56 /* DXMPAppDelegate.m in Sources */,
+				30D09F9218A0A0F3006237C0 /* DXID3Parser.m in Sources */,
 				3DAB207717CBFB2500754A56 /* NowPlayingViewController.m in Sources */,
 				3DAB208417CBFB6B00754A56 /* DXContent.m in Sources */,
+				30B2D8E21855A51900FDE6D6 /* DXApiRequest.m in Sources */,
 				3D19F8C317F2324700996699 /* SongView.m in Sources */,
 				3D9E1E4217ECE73D000A372F /* DXDataManager.m in Sources */,
 				30D371D3180524420085D34C /* DXPlaylistController.m in Sources */,
 				30D371E61809CB290085D34C /* DXMediaLibrary.m in Sources */,
+				30B2D8E81855AB3500FDE6D6 /* DXTrendingListViewController.m in Sources */,
+				30B2D8E51855A80100FDE6D6 /* DXFileIOHelper.m in Sources */,
 				3DAB208717CC077700754A56 /* DXSong.m in Sources */,
 				3D4404D717FF7B4F00C419EF /* DXMediaPlayer.m in Sources */,
 				3DAB208A17CC079000754A56 /* DXAlbum.m in Sources */,
@@ -323,6 +370,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -365,10 +413,14 @@
 		3DAB207F17CBFB2500754A56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "dxMusicPlayer/dxMusicPlayer-Prefix.pch";
 				INFOPLIST_FILE = "dxMusicPlayer/dxMusicPlayer-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.linkedin.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -376,10 +428,14 @@
 		3DAB208017CBFB2500754A56 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "dxMusicPlayer/dxMusicPlayer-Prefix.pch";
 				INFOPLIST_FILE = "dxMusicPlayer/dxMusicPlayer-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.linkedin.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

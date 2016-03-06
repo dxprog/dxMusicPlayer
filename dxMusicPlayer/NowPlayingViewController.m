@@ -12,9 +12,12 @@ const NSString *TABLECELLIDENT_PLAYLIST_ITEM = @"cellPlaylistItem";
 
 @interface NowPlayingViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *lstItems;
 @property (weak, nonatomic) IBOutlet UIImageView *imgAlbumArt;
+@property (weak, nonatomic) IBOutlet UIImageView *imgWallpaper;
+@property (weak, nonatomic) IBOutlet UILabel *lblSong;
+@property (weak, nonatomic) IBOutlet UILabel *lblAlbum;
 @property (weak, nonatomic) NSMutableArray *queue;
+@property (strong, nonatomic) DXProgressBar *progressBar;
 
 @end
 
@@ -23,13 +26,16 @@ const NSString *TABLECELLIDENT_PLAYLIST_ITEM = @"cellPlaylistItem";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.lstItems registerClass:[UITableViewCell class] forCellReuseIdentifier:(NSString *)TABLECELLIDENT_PLAYLIST_ITEM];
-    self.lstItems.delegate = self;
-    self.lstItems.dataSource = self;
-    [self.lstItems reloadData];
     self.queue = [DXPlaylistController getQueue];
+
     [DXPlaylistController setPlaylistDelegate:self];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    self.progressBar = [[DXProgressBar alloc] initWithFrame:self.view.frame andTabBar:[self tabBarController].tabBar];
+    [self.view addSubview:self.progressBar];
+
+    // In case music has already started playing, we need to load the info for the current song
+    [self itemPlaying:[DXPlaylistController getCurrentSong]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,24 +44,8 @@ const NSString *TABLECELLIDENT_PLAYLIST_ITEM = @"cellPlaylistItem";
     // Dispose of any resources that can be recreated.
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:(NSString *)TABLECELLIDENT_PLAYLIST_ITEM forIndexPath:indexPath];
-    if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:(NSString *)TABLECELLIDENT_PLAYLIST_ITEM];
-    }
-    DXSong *song = [self.queue objectAtIndex:indexPath.row];
-    cell.textLabel.text = [song title];
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.queue count];
-}
-
 - (void)itemQueued:(DXSong *)song {
-    if (nil != song) {
-        [self.lstItems reloadData];
-    }
+    // implementation for if something needs to be done when an item is queued
 }
 
 -(void) itemPlaying:(DXSong *)song {
@@ -63,7 +53,17 @@ const NSString *TABLECELLIDENT_PLAYLIST_ITEM = @"cellPlaylistItem";
         DXDataManager *dataManager = [DXDataManager getDataManager];
         DXAlbum *album = [dataManager getAlbumById:[song parent]];
         self.imgAlbumArt.image = [album loadAlbumArtThumbnail:350 by:350];
+        self.lblAlbum.text = [album title];
+        self.lblSong.text = [song title];
     }
+}
+
+- (IBAction)tapped:(UITapGestureRecognizer *)sender {
+    [DXMediaPlayer togglePause];
+}
+
+- (IBAction)swiped:(UISwipeGestureRecognizer *)sender {
+    [DXPlaylistController nextSong];
 }
 
 @end

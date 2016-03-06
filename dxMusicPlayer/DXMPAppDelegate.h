@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "lib/DXDataManager.h"
+#import "lib/DXMediaPlayer.h"
+#import "lib/DXPlaylistController.h"
 
 @interface DXMPAppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -10,10 +10,20 @@
 
 @implementation DXSong
 
+/**
+ Takes an array of dictionary objects and returns an array of songs
+ @overload
+ @param array Array to parse
+ */
 + (id) initFromArray:(NSArray *) array {
     return [DXSong initFromArray:array ByContentType:@"song"];
 }
 
+/**
+ Creates a song object from a dictionary
+ @overload
+ @param dictionary Dictionary to populate object data from
+ */
 - (instancetype) initFromDictionary:(NSDictionary *)dictionary {
     self = [super initFromDictionary:dictionary];
     self.track = [self numberFromString:[self.meta valueForKey:@"track"]];

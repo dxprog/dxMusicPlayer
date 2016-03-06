@@ -7,6 +7,7 @@
 //
 
 #import "DXContent.h"
+#import "../lib/DXFileIOHelper.h"
 
 @interface DXAlbum : DXContent
 

@@ -13,5 +13,6 @@
 @interface SongView : UITableViewController
 
 - (id)initFromAlbum:(DXAlbum *)album;
+- (void)loadFromListURL:(NSString *)endPoint withTitle:(NSString *)title;
 
 @end

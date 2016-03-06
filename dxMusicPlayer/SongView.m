@@ -16,6 +16,7 @@ const NSString *TABLECELLIDENT_SONG = @"songCell";
 
 @property (nonatomic, strong) NSArray *content;
 @property (nonatomic, weak) DXDataManager *dataManager;
+@property (nonatomic) BOOL isCreatedFromAlbum;
 
 @end
 
@@ -33,10 +34,18 @@ const NSString *TABLECELLIDENT_SONG = @"songCell";
 - (id)initFromAlbum:(DXContent *)album {
     self = [super initWithStyle:UITableViewCellStyleDefault];
     self.dataManager = [DXDataManager getDataManager];
+    self.title = album.title;
     if (nil != album) {
         self.content = [self.dataManager getSongsByAlbumId:[album id]];
     }
+    self.isCreatedFromAlbum = YES;
     return self;
+}
+
+- (void)loadFromListURL:(NSString *)endPoint withTitle:(NSString *)title {
+    self.title = title;
+    self.dataManager = [DXDataManager getDataManager];
+    self.content = [self.dataManager loadSongsFromListURL:endPoint];
 }
 
 - (void)viewDidLoad
@@ -67,7 +76,11 @@ const NSString *TABLECELLIDENT_SONG = @"songCell";
     DXContent *item = (DXContent *)[self.content objectAtIndex:indexPath.row];
     cell.textLabel.text = item.title;
     
-    // Configure the cell...
+    // Anything that's not an album view (lists of various kinds) get album art since each song can be from a different album
+    if (!self.isCreatedFromAlbum) {
+        DXAlbum *album = [self.dataManager getAlbumById:item.parent];
+        cell.imageView.image = [album loadAlbumArtThumbnail];
+    }
     
     return cell;
 }
@@ -78,56 +91,5 @@ const NSString *TABLECELLIDENT_SONG = @"songCell";
         [DXPlaylistController queueSong:song];
     }
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

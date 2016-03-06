@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "../model/DXSong.h"
-#import "PlaylistDelegate.h"
+#import "DXPlaylistDelegate.h"
 #import "DXMediaPlayer.h"
-#import "MediaPlayerDelegate.h"
+#import "DXMediaPlayerDelegate.h"
 
 @interface DXPlaylistController : NSObject <DXMediaPlayerDelegate>
 
@@ -24,5 +24,6 @@
 + (NSMutableArray *)getQueue;
 + (void)setPlaylistDelegate:(id <DXPlaylistDelegate>)delegate;
 + (BOOL)getIsPlaying;
++ (DXSong *) getCurrentSong;
 
 @end

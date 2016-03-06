@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "../model/DXSong.h"
+#import "../model/DXAlbum.h"
+#import "DXDataManager.h"
 
 @interface DXMediaLibrary : NSObject
+
++ (NSURL *)getLocalVersionOfSong:(DXSong *)song;
 
 @end
